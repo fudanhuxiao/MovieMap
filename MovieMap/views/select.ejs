@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>CIS 550 Project Team XYZH</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- JQuery -->
+    <script src="/js/jquery-2.1.4.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    
+    <!-- Bootstrap J -->
+	<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- Generate Drop Down List -->
+	<script type="text/javascript">
+		$(document).ready(function(){
+			console.log(<%- JSON.stringify(results) %>);
+			var menus=<%- JSON.stringify(results) %>;
+			for(i=1; i < menus.length; i+=2) {
+				$("#typeahead").append( $('<option></option>')
+				          .val(menus[i])
+				          .text(menus[i+1]));
+			}
+		});
+	</script>
+	
+  </head>
+  
+  <body>
+	<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand">CIS 550 Project Team XYZH</a>
+        </div>
+        <ul class="nav navbar-nav">
+	        <li><a href="/">Home</a></li>
+   	        <li class="active"><a href="/find">Find Movies</a></li> 
+	        <li><a href="/references">References</a></li>
+        </ul>
+    </div>
+	</nav>
+	<div class="container">
+	<div class="bs-docs-section">
+        <div class="page-header">
+          <div class="row">
+            <div class="col-lg-4">
+            	<h1	>Movie Map Search</h1>
+            	<!-- <script type="text/javascript" src="/js/getDetail.js"></script> -->
+            	<!-- <script type="text/javascript" src="' + $url'"></script> -->	
+            	<% if (results == null) { %>
+            		<p>Please Select Movie from the Search Result</p>
+				<% } else { %>
+			    	<% if( results[0]=="Not Found") { %>
+			    		<h2><%= results[0] %></h2>
+			    	<% } else { %>
+			    		<h4>Choose one from below</h4>
+			    		<!-- Do Nothing
+			    		<% for(var i=0; i<results.length; i++) { %>
+							<p><%= results[i] %></p>
+						<% } %>
+						-->
+					<% } %>
+				<% } %>		
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8">
+			<form method="get" action="/searchDb" name="dropdown">
+				<label for="typeahead">Select Title</label>
+				<select id="typeahead" name="typeahead"></select>
+				<button type="submit" class="btn btn-warning btn-md">See Results</button>
+			</form>
+            </div>
+            
+          </div>
+        </div>
+	</div>	
+	</div>
+
+  </body>
+</html>

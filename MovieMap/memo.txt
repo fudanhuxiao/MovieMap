@@ -1,0 +1,4 @@
+Before deploy
+
+1. Rename localhost to Server address
+2. Change Facebook app ID etc.

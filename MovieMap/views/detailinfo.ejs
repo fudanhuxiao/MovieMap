@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>CIS 550 Project Team XYZH</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- JQuery -->
+    <script src="/js/jquery-2.1.4.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    
+    <!-- Bootstrap J -->
+	<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript">
+		$(function() {
+		    $('[rel=popover]').popover();
+		});
+	</script>
+  </head>
+  
+  <body>
+	<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand">CIS 550 Project Team XYZH</a>
+        </div>
+        <ul class="nav navbar-nav">
+	        <li><a href="/">Home</a></li>
+   	        <li class="active"><a href="/find">Find Movies</a></li> 
+	        <li><a href="/references">References</a></li>
+        </ul>
+    </div>
+	</nav>
+	<div class="container">
+	<div class="bs-docs-section">
+        <div class="page-header">
+          <div class="row">
+            <div class="col-lg-12">
+            	<h1	>Movie Map Search</h1>
+            	<!-- <script type="text/javascript" src="/js/getDetail.js"></script> -->
+            	<!-- <script type="text/javascript" src="' + $url'"></script> -->	
+            	<% if (results == null) { %>
+            		<p>Please Select Movie from the Search Result</p>
+	            	<!-- Obtain Movie detail -->
+					<script type="text/javascript">
+						/* Do Nothing
+		    			var script_node = document.createElement('script');
+		    			// Obtain movie title from a parameter
+		    			var url   = location.href;
+		    		    parameters    = url.split("?");
+		    		    params   = parameters[1].split("&");
+		    		    var paramsArray = [];
+		    		    for ( i = 0; i < params.length; i++ ) {
+		    		        neet = params[i].split("=");
+		    		        paramsArray.push(neet[0]);
+		    		        paramsArray[neet[0]] = neet[1];
+		    		    }
+		    		    var categoryKey = paramsArray["title"];
+		    			script_node.src = "/getDetail?url="+categoryKey;
+		    			document.body.appendChild(script_node);
+		    			*/
+					</script>
+				<% } else { %>
+			    	<% if( results[0]=="Not Found") { %>
+			    		<h2><%= results[0] %></h2>
+			    	<% } else { %>
+			    	<!--
+			    		<% for(var i=0; i<results.length; i++) { %>
+							<p><%= results[i] %></p>
+						<% } %>
+					-->
+					<% } %>
+				<% } %>		
+            </div>
+          </div>
+        </div>
+	</div>
+	<div class="bs-docs-section">
+		<div class="page-header">
+        	<div class="row">
+        		<div class="col-md-8">
+        			<h1><%= results[1] %></h1>
+        		</div>
+        		<div class="col-md-4">
+        			<h2><a class="btn btn-warning" href="<%= results[0] %>">Explore Movie Map</a>
+        				<a class="btn btn-warning" href="<%= results[14] %>" target=”_blank”>Bing Image Search</a>
+        			</h2>
+        		</div>
+          	</div>
+          	<div class="row">
+          		<div class="col-md-4">
+          			<img src="<%= results[8] %>" alt="" class="img-responsive">
+          		</div>
+          		<div class="col-md-4">
+          			<h4>Studio: <%= results[9] %></h4>
+          			<h4>Director:</h4>
+          			<p>
+          				&emsp;&emsp;
+          				<a href="#" role="button" rel="popover" class="btn-link"
+          					title="<h4><%= results[10] %></h4>"
+          					data-html="true"
+          					data-content="<h5>Date of Birth: <%= results[11] %></h5><div><img src=<%= results[12] %> width=250></div>"
+          					data-placement="right"
+          					data-trigger="hover"><%= results[10] %></a>
+          				<a href="<%= results [13] %>" target=”_blank”>[Detail]</a>
+          			</p>
+          			<h4>Rating: <%= results[2] %></h4>
+          			<h4>Revenue: <%= results[5] %></h4>
+          			<h4>Budget: <%= results[7] %></h4>
+          			<h4>HomePage:<br><a href="<%= results[6] %>"><%= results[6] %></a></h4>
+          			
+          			<h4>Trailer:</h4>
+          			<h5><a href="<%= results[3] %>"><%= results[3] %></a></h5>
+	          		<div class="embed-responsive embed-responsive-16by9">
+	          			<iframe src="<%= results[4] %>"></iframe>
+	          		</div>
+          		</div>
+          		<div class="col-md-4">
+          			<h4>Cast:</h4>
+          			<table class="table table-striped table-hover">
+						<thead>
+						  <tr>
+						    <th>Name</th>
+						    <th>Link</th>
+						  </tr>
+						</thead>
+						<tbody>
+							<%	var key = 0;
+      							key = results.indexOf("Comments Start here") + 1; 
+ 								for(var i=15; i<key-1; i=i+4) { %>
+								<tr>
+							      <td><a href="#" role="button" rel="popover" class="btn-link"
+		          					title="<h4><%= results[i] %></h4>"
+		          					data-html="true"
+		          					data-content="<h5>Date of Birth: <%= results[i+1] %></h5><div><img src=<%= results[i+2] %> width=250></div>"
+		          					data-placement="right"
+		          					data-trigger="hover"><%= results[i] %></a>
+		          				  </td>
+							      <td><a href="<%= results [i+3] %>" target=”_blank”>[Detail]</a></td>
+							    </tr>
+							<% } %>
+						</tbody>
+					</table>
+          		</div>
+          	</div>
+        </div>
+        
+        <div class="row">
+      			<h5>Comments</h5>
+      			<div class="col-md-4">
+      			<% 
+      			for(i=key; i<results.length-1; i++) { %>
+          			<p><%= i-key + 1 %>. <%= results[i] %></p>
+				<% } %>
+				</div>
+      	</div>
+      	<div class="row">
+      			<div class="col-md-4">
+	  				<form method="post" action="/Comments">
+	  				<textarea name="comments" rows="4" cols="50" placeholder="Input your comments here."></textarea></br>
+	  				<button name="Mid" type="submit" value = "<%= results[results.length-1] %>">Submit your comments</button>
+	  				</form>
+  				</div>
+      	</div>
+	</div>
+
+	</div>
+
+  </body>
+  </html>

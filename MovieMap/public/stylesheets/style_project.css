@@ -1,0 +1,32 @@
+body {font-family: sans-serif, 'ÉÅÉCÉäÉI', 'Meiryo', 'Hiragino Kaku Gothic Pro', 'ÉqÉâÉMÉmäpÉS Pro W3', 'Osaka', 'ÇlÇr ÇoÉSÉVÉbÉN';letter-spacing: .15rem;}
+nav ul a,nav .brand-logo {color: #444;}
+p {line-height: 2rem;font-size: 1.1rem;}
+.button-collapse {color: #26a69a;}
+.mes {height: auto;min-height: 380px;}
+.mes .section {top: 20%;}
+.info {height: auto;min-height: 500px;} 
+.parallax-container .section {width: 100%;}
+.clearfix {zoom: 1; }
+.clear {clear: both;}
+.info h1 { font-size: 3rem;line-height: 2.8rem;padding: 12% 0;}
+.info h2 { font-size: 1rem;line-height: 1.5rem;}
+.deco {border-bottom: 2px #26a69a dotted;padding: 4%;}
+h6 { font-size: 1.3rem;padding: 5%;line-height: 2rem;}
+.padding {padding: 5%;}
+.m-padding {padding: 5% 0;}
+.s-padding {padding: 1%;}
+nav ul#nav-mobile li:first-child a {overflow: auto;}
+.infoIcon {float:left; height: 175px; width: 175px; line-height: 175px; max-width: 100%; background: #eceff1; border-radius: 50%; -o-border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; display: block; color: #fff; text-align: center; vertical-align: middle; position: relative; margin: 0 10px 50px;}
+.up-btn { width: 50px; height: 50px; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; -o-border-radius: 50%; background: rgba(61, 201, 179, 0.5); display: block; margin: 0 auto; color: #fff; font-size: 18px; line-height: 46px; text-align: center; top: -26px; left: 0; right: 0; margin-left: auto; margin-right: auto; }
+.up-btn:hover, up-btn:focus { color: #fff; background: rgba(61, 201, 179, 1); }
+.icon-block {padding: 0 15px;}
+footer.page-footer {margin: 0;}
+@media only screen and (max-width : 992px) {
+.parallax-container .section {position: absolute;top: 30%;}
+.mes {min-height: 150px;}
+.mes .section {position: absolute;top: 25%;}
+.info h1 { padding: 5%;}
+#index-banner .section {top: 10%;}
+.parallax-container h1 {font-size: 2.2rem;}
+.top img { -ms-interpolation-mode: bicubic; height: 500px; width /***/:auto; /*IE8*/}
+}

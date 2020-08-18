@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>CIS 550 Project Team XYZH</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- JQuery -->
+    <script src="/js/jquery-2.1.4.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    
+    <!-- Bootstrap J -->
+	<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+  </head>
+  
+  <body>
+	<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand">CIS 550 Project Team XYZH</a>
+        </div>
+        <ul class="nav navbar-nav">
+	        <li><a href="/">Home</a></li>
+   	        <li class="active"><a href="/find">Find Movies</a></li> 
+	        <li><a href="/references">References</a></li>
+        </ul>
+    </div>
+	</nav>
+	<div class="container">
+	<div class="bs-docs-section">
+        <div class="page-header">
+          <div class="row">
+            <div class="col-lg-4">
+            	<h1	>Movie Map Search</h1>	
+            </div>
+          </div>
+        </div>
+	</div>
+	<div class="bs-docs-section">
+        <div class="page-header">
+        	<div class="row">
+ 	            <div class="col-lg-6">
+ 	            	<h2>Bing Image Search Results</h2>
+ 	            </div>
+ 	        </div>
+           	<% if (results == null) { %>
+            	<div class="row">
+ 	            	<div class="col-lg-4">
+            			<p>Please Select Movie from the Search Result</p>
+            		</div>
+            	</div>
+				<% } else { %>
+			    	<% if( results[0]=="Not Found") { %>
+			    		<div class="row">
+ 	            			<div class="col-lg-4">
+			    				<h2><%= results[0] %></h2>
+			    			</div>
+            			</div>
+			    	<% } else { %>
+			    		<!-- Show 48 image search results (12 columns * 4 rows)-->
+			    		<% for(var rownum=0; rownum<12; rownum++) { %>
+				    		<div class="row">
+				    		<% for(var i=rownum*4; i<(rownum+1)*4; i++) { %>
+		            			<div class="col-md-3">
+									<a href="<%= results[i].SourceUrl %>" class="thumbnail">
+										<img src="<%= results[i].Thumbnail.MediaUrl %>" class="img-rounded img-responsive">
+									</a>
+									<p><%= results[i].Title %></p>
+								</div>
+							<% } %>
+							</div>
+						<% } %>
+					<% } %>
+				<% } %>		
+        </div>
+	</div>
+
+	</div>
+
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>CIS 550 Project Team XYZH</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- JQuery -->
+    <script src="/js/jquery-2.1.4.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    
+    <!-- Bootstrap J -->
+	<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+	
+	<!-- Typeahead -->
+    <script type="text/javascript" src="/js/typeahead.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+    		$("input.typeahead").typeahead({
+        	name: 'countries',
+        	remote: 'http://localhost:3000/search?key=%QUERY',
+        	//remote: 'http://ec2-52-20-74-142.compute-1.amazonaws.com:9000/search?key=%QUERY',
+        	limit: 10
+    	});
+	});
+	</script>
+	
+	<!-- Get Parameter -->
+	<script type="text/javascript">
+	function getParam() {
+        var url   = location.href;
+        parameters    = url.split("?");
+        params   = parameters[1].split("&");
+        var paramsArray = [];
+        for ( i = 0; i < params.length; i++ ) {
+            neet = params[i].split("=");
+            paramsArray.push(neet[0]);
+            paramsArray[neet[0]] = neet[1];
+        }
+        var categoryKey = paramsArray["valid"];
+        
+        var url = "/test";
+    	var param = "?valid=" + categoryKey;
+    	location.href = url + param;
+	}
+	</script>
+	
+	<!-- Style for Typeahead -->
+	<style type="text/css">
+		.bs-example{
+			font-family: sans-serif;
+			position: relative;
+			margin: 50px;
+		}
+		.typeahead, .tt-query, .tt-hint {
+			border: 2px solid #CCCCCC;
+			border-radius: 8px;
+			font-size: 15px;
+			height: 40px;
+			line-height: 30px;
+			outline: medium none;
+			padding: 0px 12px;
+			width: 550px;
+		}
+		.typeahead {
+			background-color: #FFFFFF;
+		}
+		.typeahead:focus {
+			border: 2px solid #0097CF;
+		}
+		.tt-query {
+			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+		}
+		.tt-hint {
+			color: #999999;
+		}
+		.tt-dropdown-menu {
+			background-color: #FFFFFF;
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			border-radius: 8px;
+			box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+			margin-top: 12px;
+			padding: 8px 0;
+			width: 550px;
+		}
+		.tt-suggestion {
+			font-size: 24px;
+			line-height: 24px;
+			padding: 3px 20px;
+		}
+		.tt-suggestion.tt-is-under-cursor {
+			background-color: #0097CF;
+			color: #FFFFFF;
+		}
+		.tt-suggestion p {
+			margin: 0;
+		}
+	</style>
+  </head>
+  
+  <body>
+	<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand">CIS 550 Project Team XYZH</a>
+        </div>
+        <ul class="nav navbar-nav">
+	        <li><a href="/">Home</a></li>
+   	        <li class="active"><a href="/find">Find Movies</a></li> 
+	        <li><a href="/references">References</a></li>
+        </ul>
+    </div>
+	</nav>
+	<div class="container">
+	<div class="bs-docs-section">
+        <div class="page-header">
+          <div class="row">
+            <div class="col-lg-4">
+            	<h1	>Movie Map Search</h1>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+        <form method="get" action="/searchDb">
+            <div class="col-lg-6">
+	   	 		<input type="text" name="typeahead" placeholder="Type Name of Your Favorite Movie" class="typeahead tt-query" autocomplete="off" spellcheck="false"/>
+			</div>
+            <div class="col-lg-4">
+	            <button type="submit" class="btn btn-primary">See Results</button>
+	   	   	 	<!-- <a href="#" onclick="getParam();" class="btn btn-primary">Search</a> -->
+            </div>
+         </form>
+         </div>
+	</div>
+	</div>
+
+  </body>
+</html>

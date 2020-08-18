@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>arbor.js project template</title>
+	<link rel="stylesheet" href="/stylesheets/style_arbor.css" type="text/css">
+	<!-- Bootstrap CSS -->
+	<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!-- JQuery -->
+    <script src="/js/jquery-2.1.4.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    
+    <script src="/js/arbor.js"></script>  
+	<script src="/js/arbor-tween.js"></script>
+	<script src="/js/graphics.js"></script>
+	<script src="/js/render.js"></script>
+	
+	<!-- Bootstrap J -->
+	<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+	<div id="arbor">
+	<div id="nav">
+        <p>CIS 550 Project Team XYZH</p>
+    
+    </div>
+    <ul class="nav navbar-nav">
+       	<li><a href="/">Home</a></li>
+        <li><a href="/find">Search</a></li>
+    	<li><a href="/references">References</a></li>
+   	</ul>    
+
+	<canvas id="viewport" width="1200" height="600"></canvas>
+	
+	<% if (results == null) { %>
+	<!--
+   		<form method="get" action="/searchDb">
+    	    <button type="submit" class="btn btn-warning btn-lg">See Results</button>
+		</form>
+	-->
+		<p> Please search movie from the search page. </p>		
+    <% } else { %>
+    	<% if( results[0]=="Not Found") { %>
+    		<p><%= results[0] %></p>
+    	<% } else { %>
+    		<% for(var i=0; i<results.length; i++) { %>
+				<!-- <p><%= results[i].title %></p> -->
+			<% } %>
+    		<script type="text/javascript">
+    			var data = <%- JSON.stringify(results) %>;
+			</script>
+	   		<script type="text/javascript" src="/js/main.js"></script>
+		<% } %>
+	<% } %>	
+		
+	</div>
+</body>
+</html>
