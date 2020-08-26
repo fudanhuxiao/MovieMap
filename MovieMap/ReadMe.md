@@ -14,7 +14,7 @@ Please refer to 5.2.
 1. Extract the application to your local host.
 2. Change directory to root directory of our application.
 3. Execute the application with the following command:
-	# node www/bin
+	 node www/bin
 4. Access to the following address:
 	http://localhost:3000
 
